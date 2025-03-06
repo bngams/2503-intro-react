@@ -4,6 +4,7 @@ function AddTodo() {
     const [todo, setTodo] = useState("");
 
     const handleChange = (event) => {
+      console.log(event.target.value);
       setTodo(event.target.value);
     };
 

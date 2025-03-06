@@ -12,7 +12,7 @@ function TodoApp() {
     return (
         <div>
             <h1>Todo App</h1>
-            <AddTodo onAddTodo={addTodo} />
+            <AddTodo onSubmit={addTodo} />
             <TodoList todos={todos} />
         </div>
     );
