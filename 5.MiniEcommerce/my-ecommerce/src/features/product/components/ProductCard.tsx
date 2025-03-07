@@ -1,8 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Product } from "../models/Product";
+import { useContext } from "react";
+import { CartContext } from "@/features/cart/providers/CartProvider";
 
 //ProductCard(props: {product: Product})
 function ProductCard({ product } : {product: Product}) {
+    const cartContext = useContext(CartContext);
+
+    const addProductToCart = () => {
+        console.log('Adding product to cart', product);
+        cartContext.addToCart(product);
+    }
+
     return (
         <Card>
           <CardHeader>
@@ -13,7 +22,7 @@ function ProductCard({ product } : {product: Product}) {
             <div className="flex justify-center">
               <img className="max-w-[250px] max-h-[250px]" src={product.thumbnail} alt={product.title} />
             </div>
-            <button>Add to cart</button>
+            <button onClick={addProductToCart}>Add to cart</button>
           </CardContent>
         </Card>
     );

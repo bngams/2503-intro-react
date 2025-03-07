@@ -1,8 +1,12 @@
+import { CartContext } from "@/features/cart/providers/CartProvider";
 import { mainNavItems } from "@/routes";
-import { House } from "lucide-react";
+import { House, ShoppingCart } from "lucide-react";
+import { useContext } from "react";
 import { Link } from "react-router";
 
 function Header() {
+    const cartContext = useContext(CartContext);
+
     return (
       <header className="flex justify-between items-center p-4 mb-4 bg-gray-200">
         <div>
@@ -20,6 +24,10 @@ function Header() {
                 ))}
             </ul>
         </nav>
+        <div className="flex items-center space-x-2">
+            <ShoppingCart size={32} />
+            <span className="text-[32px] font-bold">{cartContext.cart.length}</span>
+        </div>
       </header>
     )
 }
